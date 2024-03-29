@@ -1,0 +1,19 @@
+{
+  "name": "send-verification-email",
+  "version": "1.0.0",
+  "description": "Cloud Function to send verification email",
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.0.0",
+    "@mailchimp/mailchimp_transactional": "^1.0.50",
+    "mysql2": "^3.1.2",
+    "node-json-logger": "^0.2.1",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "functions-framework --target=sendVerificationEmail"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}
