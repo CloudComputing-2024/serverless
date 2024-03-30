@@ -1,7 +1,7 @@
 'use strict';
 const functions = require('@google-cloud/functions-framework');
 const mailchimp = require("@mailchimp/mailchimp_transactional")(
-    "md-_p3Ix7gIxMxLW2VQ6Shf-A"
+    process.env.API_KEY,
 );
 
 const Logger = require('node-json-logger');
