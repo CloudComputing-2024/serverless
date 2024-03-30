@@ -20,7 +20,7 @@ const dbConfig = {
     database: process.env.DB_NAME
 };
 
-async function run(firstname, email, verificationLink) {
+async function run(firstname, username, verificationLink) {
     const htmlTemplate = await fs.readFile('verification-email.html', 'utf-8');
     const html = htmlTemplate
         .replace('${firstname}', firstname)
@@ -32,22 +32,27 @@ async function run(firstname, email, verificationLink) {
         html: html,
         to: [
             {
-                email: email,
+                email: username,
                 type: "to"
             }
         ]
     };
 
     const response = await mailchimp.messages.send({message});
-    logger.info(response);
+    logger.info(`Response: ${JSON.stringify(response)}`);
 }
 
 functions.cloudEvent('sendVerificationEmail', async (cloudEvent) => {
     try {
-        const eventData = JSON.parse(Buffer.from(cloudEvent.data.message.data, 'base64').toString());
-        logger.info({message: "event Data:", eventData});
 
-        const {username, firstName} = eventData;
+        const eventData = JSON.parse(Buffer.from(cloudEvent.data.message.data, 'base64').toString());
+
+        // logger.info(`eventData: ${eventData}`);
+        logger.info(`eventData: ${JSON.stringify(eventData)}`);
+
+        const {firstName, username} = eventData;
+        logger.info(`firstName: ${firstName}`);
+        logger.info(`username: ${username}`);
 
         // Generate a verification token
         const verificationToken = uuidv4();
@@ -68,6 +73,6 @@ functions.cloudEvent('sendVerificationEmail', async (cloudEvent) => {
 
         logger.info(`Verification email sent to ${username}`);
     } catch (error) {
-        logger.error("Error sending verification email:", username);
+        logger.error(`Error sending verification email:  ${error}`);
     }
 });
