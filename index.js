@@ -59,7 +59,7 @@ functions.cloudEvent('sendVerificationEmail', async (cloudEvent) => {
         // Token Expired in 2 minutes
         const expirationTimestamp = new Date(Date.now() + 2 * 60 * 1000);
         // Create a verification link
-        const verificationLink = `http://jiapanwei.me:8080/verify?token=${verificationToken}`;
+        const verificationLink = `https://jiapanwei.me/verify?token=${verificationToken}`;
 
         await run(firstName, username, verificationLink);
 
