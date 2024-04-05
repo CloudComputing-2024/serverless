@@ -1,13 +1,37 @@
-<div style="font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #333;">
-    <h2 style="color: #8358FF;">Verify your Email!</h2>
+<div>
+    <h2>Verify your Email!</h2>
     <p>Welcome, ${firstname}! Thank you for creating a new account. Please verify your email address to continue.</p>
-    <p style="margin: 20px 0;">
-        <a href="${verificationLink}" style="background-color: #A889FF; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Verify Email</a>
+    <p>
+        <a href="${verificationLink}">Verify Email</a>
     </p>
     <p>If you did not request this, please ignore this email.</p>
-    <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
-    <footer style="font-size: 0.8em;">
+    <hr>
+    <footer>
         <p>Regards,</p>
         <p>Your Team at <strong>jiapanwei.me</strong></p>
     </footer>
 </div>
+<style>
+    div {
+        font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+        color: #333;
+    }
+    h2 {
+        color: #8358FF;
+    }
+    a {
+        background-color: #A889FF;
+        color: #ffffff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    hr {
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+    }
+    footer {
+        font-size: 0.8em;
+    }
+</style>
